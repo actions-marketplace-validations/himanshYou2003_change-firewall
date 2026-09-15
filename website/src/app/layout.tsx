@@ -37,9 +37,19 @@ export const metadata: Metadata = {
     siteName: 'Change Firewall',
     images: [
       {
-        url: '/preview.png',
-        width: 1672,
-        height: 941,
+        url: 'https://change-firewall.vercel.app/preview.jpg',
+        secureUrl: 'https://change-firewall.vercel.app/preview.jpg',
+        width: 1200,
+        height: 675,
+        type: 'image/jpeg',
+        alt: 'Change Firewall — AST Behavioral Diffing, Blast Radius & MCP Preview',
+      },
+      {
+        url: 'https://change-firewall.vercel.app/preview.png',
+        secureUrl: 'https://change-firewall.vercel.app/preview.png',
+        width: 1200,
+        height: 675,
+        type: 'image/png',
         alt: 'Change Firewall — AST Behavioral Diffing, Blast Radius & MCP Preview',
       },
     ],
@@ -48,10 +58,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Change Firewall ⚡ Your AI wrote the code. We tell you what it broke.',
+    title: 'Change Firewall ⚡ Stop Letting AI Coding Agents Grade Their Own Homework.',
     description:
-      'Deterministic AST behavioral diffing, caller blast radius mapping, and native Model Context Protocol (MCP) server for modern AI engineering.',
-    images: ['/preview.png'],
+      'The neutral, compiler-grounded referee sitting between "Agent says it\'s done" and "Safe to merge." Deterministic AST verification, blast radius mapping, and invariant memory.',
+    images: ['https://change-firewall.vercel.app/preview.jpg'],
   },
   icons: {
     icon: '/logo.png',
