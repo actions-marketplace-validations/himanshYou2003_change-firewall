@@ -37,18 +37,10 @@ export const metadata: Metadata = {
     siteName: 'Change Firewall',
     images: [
       {
-        url: 'https://change-firewall.vercel.app/preview.jpg',
-        secureUrl: 'https://change-firewall.vercel.app/preview.jpg',
-        width: 1200,
-        height: 675,
-        type: 'image/jpeg',
-        alt: 'Change Firewall — AST Behavioral Diffing, Blast Radius & MCP Preview',
-      },
-      {
         url: 'https://change-firewall.vercel.app/preview.png',
         secureUrl: 'https://change-firewall.vercel.app/preview.png',
         width: 1200,
-        height: 675,
+        height: 630,
         type: 'image/png',
         alt: 'Change Firewall — AST Behavioral Diffing, Blast Radius & MCP Preview',
       },
@@ -61,7 +53,7 @@ export const metadata: Metadata = {
     title: 'Change Firewall ⚡ Stop Letting AI Coding Agents Grade Their Own Homework.',
     description:
       'The neutral, compiler-grounded referee sitting between "Agent says it\'s done" and "Safe to merge." Deterministic AST verification, blast radius mapping, and invariant memory.',
-    images: ['https://change-firewall.vercel.app/preview.jpg'],
+    images: ['https://change-firewall.vercel.app/preview.png'],
   },
   icons: {
     icon: '/logo.png',
