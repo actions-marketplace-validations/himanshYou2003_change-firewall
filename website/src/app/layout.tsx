@@ -9,6 +9,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://change-firewall.vercel.app'),
   title: 'Change Firewall ⚡ — AST Behavioral Diffing, Blast Radius & MCP for AI Code',
   description:
     'The neutral, non-LLM referee between "Agent says it\'s done" and "Safe to merge." Deterministic compiler-grounded verification of AI agent actions, blast radius mapping, invariant memory, and symbolic runtime crash proofs.',
