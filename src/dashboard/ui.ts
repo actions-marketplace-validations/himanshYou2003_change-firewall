@@ -9,7 +9,7 @@ export function getDashboardHtml(report: AnalysisReport): string {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Change Firewall — AI Code Change Behavioral Verification Engine</title>
+  <title>Change Firewall — The Deterministic Trust Layer for AI Coding Agents</title>
   <link rel="icon" type="image/png" href="${LOGO_DATA_URI}" />
   <link rel="apple-touch-icon" href="${LOGO_DATA_URI}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1669,7 +1669,7 @@ export function getDashboardHtml(report: AnalysisReport): string {
         <div>
           <div class="brand-title-wrap">
             <span class="brand-title">Change Firewall</span>
-            <span class="brand-version-pill">v0.3.0</span>
+            <span class="brand-version-pill">v0.3.1</span>
           </div>
           <div class="brand-subtitle">AI Code Change Behavioral Verification Engine</div>
         </div>
@@ -2092,7 +2092,7 @@ export function getDashboardHtml(report: AnalysisReport): string {
       <div>
         <a href="https://github.com/himanshYou2003/change-firewall" target="_blank" rel="noreferrer">GitHub</a>
         <span style="margin: 0 8px; opacity: 0.4;">|</span>
-        <a href="https://www.npmjs.com/package/change-firewall" target="_blank" rel="noreferrer">NPM v0.3.0</a>
+        <a href="https://www.npmjs.com/package/change-firewall" target="_blank" rel="noreferrer">NPM v0.3.1</a>
       </div>
     </footer>
   </div>
