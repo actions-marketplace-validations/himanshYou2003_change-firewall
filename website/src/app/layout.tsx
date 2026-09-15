@@ -9,6 +9,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://change-firewall.vercel.app'),
   title: 'Change Firewall ⚡ — AST Behavioral Diffing, Blast Radius & MCP for AI Code',
   description:
     'Converts raw code diffs into behavior-aware change reports, downstream caller blast radius mapping, and deterministic risk scoring (0-100). Native MCP integration for Claude, Antigravity, Cursor, and Windsurf.',
@@ -30,7 +31,27 @@ export const metadata: Metadata = {
       'Deterministic AST behavioral diffing, caller blast radius mapping, and native Model Context Protocol (MCP) server for modern AI engineering.',
     url: 'https://change-firewall.vercel.app',
     siteName: 'Change Firewall',
+    images: [
+      {
+        url: '/preview.png',
+        width: 1672,
+        height: 941,
+        alt: 'Change Firewall — AST Behavioral Diffing, Blast Radius & MCP Preview',
+      },
+    ],
+    locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Change Firewall ⚡ Your AI wrote the code. We tell you what it broke.',
+    description:
+      'Deterministic AST behavioral diffing, caller blast radius mapping, and native Model Context Protocol (MCP) server for modern AI engineering.',
+    images: ['/preview.png'],
+  },
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
 };
 
