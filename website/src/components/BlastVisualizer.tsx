@@ -672,27 +672,27 @@ export default function BlastVisualizer() {
           }`}
         >
           {/* Diff preview box */}
-          <div className="code-dark-panel rounded-xl p-3.5 border border-white/10 font-mono text-xs shadow-inner">
-            <div className="flex items-center justify-between text-[11px] text-slate-400 pb-2 border-b border-white/[0.06] mb-2.5">
-              <span className="flex items-center gap-1.5 font-semibold text-slate-300 truncate">
-                <FileCode2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+          <div className="code-dark-panel rounded-xl p-3.5 border border-stone-400/40 dark:border-white/10 font-mono text-xs shadow-inner">
+            <div className="flex items-center justify-between text-[11px] text-stone-600 dark:text-slate-400 pb-2 border-b border-stone-400/30 dark:border-white/[0.06] mb-2.5">
+              <span className="flex items-center gap-1.5 font-semibold text-stone-900 dark:text-slate-300 truncate">
+                <FileCode2 className="w-3.5 h-3.5 text-sky-700 dark:text-sky-400 shrink-0" />
                 <span className="truncate">src/controllers/user.ts</span>
               </span>
-              <span className="text-brand-cyan shrink-0">Line 42</span>
+              <span className="text-brand-cyan shrink-0 font-medium">Line 42</span>
             </div>
 
             <div className="space-y-1">
-              <div className="bg-red-500/15 text-red-300 px-2.5 py-1.5 rounded flex items-center gap-2 text-xs">
-                <span className="font-bold text-red-400">-</span>
+              <div className="bg-red-500/15 text-red-900 dark:text-red-300 px-2.5 py-1.5 rounded flex items-center gap-2 text-xs font-semibold">
+                <span className="font-bold text-red-700 dark:text-red-400">-</span>
                 <span className="font-mono">return user;</span>
               </div>
-              <div className="bg-emerald-500/15 text-emerald-300 px-2.5 py-1.5 rounded flex items-center gap-2 text-xs">
-                <span className="font-bold text-emerald-400">+</span>
+              <div className="bg-emerald-500/15 text-emerald-900 dark:text-emerald-300 px-2.5 py-1.5 rounded flex items-center gap-2 text-xs font-semibold">
+                <span className="font-bold text-emerald-700 dark:text-emerald-400">+</span>
                 <span className="font-mono">return &#123; user &#125;;</span>
               </div>
             </div>
 
-            <p className="text-[11px] text-slate-400 mt-2 font-sans leading-relaxed">
+            <p className="text-[11px] text-stone-700 dark:text-slate-400 mt-2 font-sans leading-relaxed">
               AI wrapped the return payload in a nested object without updating downstream contract deserializers.
             </p>
           </div>

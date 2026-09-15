@@ -228,17 +228,18 @@ npx change-firewall inspect --staged`,
             'AI coding assistants frequently claim a harmless task (e.g. "Fix button padding and header colors") but secretly modify auth guards, alter database models, or touch 15+ backend files. The audit-agent command performs Bidirectional Semantic Grounding between the stated prompt text (-i "...") and the real TypeScript AST diffs. It verifies that what was claimed actually matches the code, detects unannounced breaking contract changes, and rejects unrelated or gibberish claims.',
           callout: {
             type: 'warning',
-            text: 'How to Prompt Correctly: Declare the specific feature domain or contract changes (e.g. "add real data to weightage calculator" or "extend getInsurers signature with optional customInsurers"). If an intent has zero correlation with the modified files (e.g. "i love india"), Change Firewall flags a STEALTH_MUTATION with 70% drift penalty!',
+            text: 'How to Prompt Correctly: Declare the specific feature domain or contract changes (e.g. "implement Stripe webhook handler" or "extend getUserProfile signature with optional tenantId"). If an intent claim has zero semantic correlation with the modified files (e.g. claiming "update documentation and fix typos in README" while modifying backend auth or payment code), Change Firewall flags a STEALTH_MUTATION with a +70% drift penalty!',
           },
           codeLanguage: 'bash',
-          codeExample: `# 1. Audit a conversational feature implementation prompt
-npx change-firewall audit-agent -i "add real data to weightage calculator"
+          codeExample: `# 1. Audit a backwards-compatible signature extension (Drift: 0% ALIGNED)
+npx change-firewall audit-agent -i "extend getUserProfile with optional tenantId default parameter"
 
-# 2. Audit an explicit contract signature extension
-npx change-firewall audit-agent -i "extend getInsurers with optional customInsurers default parameter"
+# 2. Audit a feature implementation with declared signature changes (Drift: 0% ALIGNED)
+npx change-firewall audit-agent -i "implement Stripe webhook handler and update billing export signatures"
 
-# 3. Detect stealth mutations or unrelated claims (triggers STEALTH_MUTATION)
-npx change-firewall audit-agent -i "i love india"
+# 3. Detect deceptive scope or ungrounded hallucination (triggers STEALTH_MUTATION)
+npx change-firewall audit-agent -i "update documentation and fix typos in README"
+# When actual changes touched payment or auth routes -> Flags STEALTH_MUTATION (70% Drift, Blocks Merge)
 
 # 4. Automated CI/CD PR check against pull request title
 npx change-firewall audit-agent -i "\${{ github.event.pull_request.title }}"`,
@@ -252,8 +253,8 @@ npx change-firewall audit-agent -i "\${{ github.event.pull_request.title }}"`,
             ],
           },
           bulletPoints: [
-            'Best Practice (Solution A): When adding new parameters to existing functions, always provide safe default values (e.g., "export function getInsurers(channel, customInsurers = null)"). This preserves compatibility for existing callers and reduces contract drift penalty to 0.',
-            'Conversational & Typo-Tolerant: Understands conversational queries ("did we add weightage calculator with real data") by extracting subject tokens and matching against changed modules.',
+            'Best Practice (Solution A): When adding new parameters to existing functions, always provide safe default values (e.g., "export function getUserProfile(id, tenantId = null)"). This preserves compatibility for existing callers and reduces contract drift penalty to 0.',
+            'Conversational & Typo-Tolerant: Understands conversational queries ("did we add user authentication with session guards") by extracting subject tokens and matching against changed modules.',
             'Zero False Alignments: If an intent claims a topic completely absent from the changeset, it is strictly flagged as an Unrelated Intent Claim rather than falsely declaring alignment.',
           ],
           prevDocId: 'cli-interactive',
@@ -937,23 +938,23 @@ npx change-firewall memory record`,
             'AI coding assistants are famous for hallucinatory collateral damage—claiming a simple style fix while accidentally deleting an authorization guard, or asserting changes occurred when none did. Change Firewall performs Bidirectional Semantic Grounding between natural language intent (-i "...") and physical AST syntax deltas, computing an Intent Drift Score (0-100%).',
           codeLanguage: 'bash',
           codeExample: `# 1. Backwards-Compatible Intent (Drift: 0% ALIGNED)
-npx change-firewall audit-agent -i "extend getInsurers with optional customInsurers default parameter"
+npx change-firewall audit-agent -i "extend getUserProfile with optional tenantId default parameter"
 
-# 2. Breaking Contract Modification (Unannounced HIGH shift penalty)
-npx change-firewall audit-agent -i "update weightage calculation"
-# If 9 exported signatures were modified without declaration -> Flags STEALTH_MUTATION (100% Drift)
+# 2. Breaking Contract Modification (Unannounced HIGH contract shift)
+npx change-firewall audit-agent -i "minor internal cleanup in user service"
+# If public export signatures were modified without declaration -> Flags STEALTH_MUTATION (100% Drift)
 
-# 3. Gibberish or Unrelated Intent (Zero grounding overlap penalty)
-npx change-firewall audit-agent -i "i love india"
-# Flags STEALTH_MUTATION (70% Drift, Unrelated Intent Claim, Blocks Merge)
+# 3. Ungrounded / Hallucinated PR Title (Zero semantic grounding overlap)
+npx change-firewall audit-agent -i "update documentation and fix typos in README"
+# If actual changes touched payment or auth files -> Flags STEALTH_MUTATION (70% Drift, Blocks Merge)
 
 # 4. JSON output for autonomous CI/CD or Agent loops
-npx change-firewall audit-agent -i "Refactor payment service" --json`,
+npx change-firewall audit-agent -i "refactor payment service and update export contracts" --json`,
           bulletPoints: [
             'Bidirectional Semantic Grounding: Substantive token extraction filters auxiliary verbs (have, did, added) and demands semantic overlap with modified files/symbols before granting alignment.',
             'Unannounced Contract Penalties (+35 pts per HIGH change): If public export contracts or function signatures are modified without being declared in the intent prompt, drift score spikes.',
             'Zero False Positives: Standard utility calls like parseParams, parseInt, and JSON.parse are recognized as non-breaking data parsing rather than strict payload schema mutators.',
-            'Solution A (Best Practice for Extended Parameters): Always supply default parameters (e.g. export function getInsurers(channel, customInsurers = null)) to preserve backwards compatibility for existing callers and keep contract drift at 0.',
+            'Solution A (Best Practice for Extended Parameters): Always supply default parameters (e.g. export function getUserProfile(id, tenantId = null)) to preserve backwards compatibility for existing callers and keep contract drift at 0.',
           ],
           prevDocId: 'behavioral-memory-store',
           nextDocId: 'crash-simulation-sandbox',

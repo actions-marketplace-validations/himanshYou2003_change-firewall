@@ -647,12 +647,12 @@ export default function GeniusPillars() {
               </div>
 
               {/* Exact Line Proof Snippet */}
-              <div className="bg-[#0b0f19] text-gray-200 rounded-xl p-5 font-mono text-xs border border-gray-800 shadow-inner overflow-x-auto">
-                <div className="flex items-center justify-between pb-3 border-b border-gray-800 mb-3 text-gray-400 text-[11px]">
+              <div className="bg-[#d1c8b7] text-stone-900 border border-[#b8ad9b] dark:bg-[#0b0f19] dark:text-gray-200 dark:border-gray-800 rounded-xl p-5 font-mono text-xs shadow-inner overflow-x-auto">
+                <div className="flex items-center justify-between pb-3 border-b border-stone-400/40 dark:border-gray-800 mb-3 text-stone-600 dark:text-gray-400 text-[11px] font-medium">
                   <span>SYMBOLIC FAILURE TRACE CHAIN (Zero Guesswork)</span>
-                  <span className="text-emerald-400">Exit Code: 1 (BLOCKED)</span>
+                  <span className="text-emerald-800 dark:text-emerald-400 font-bold">Exit Code: 1 (BLOCKED)</span>
                 </div>
-                <pre className="text-[12px] leading-relaxed">
+                <pre className="text-[12px] leading-relaxed text-stone-900 dark:text-gray-200">
 {`1. src/services/user.ts:42  ➔ getUser() return type widened to nullable (User | null)
 2. src/api/routes/auth.ts:19 ➔ const user = await getUser(id)
 3. src/api/routes/auth.ts:24 ➔ return NextResponse.json({ role: user.role })
