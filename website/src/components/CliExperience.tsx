@@ -352,69 +352,69 @@ export default function CliExperience() {
           </div>
 
           {/* Interactive Simulated Terminal Mockup */}
-          <div className="rounded-2xl bg-[#090d16] border border-gray-800 shadow-2xl overflow-hidden animate-in fade-in duration-200">
+          <div className="rounded-2xl bg-[#d1c8b7] text-stone-900 border border-[#b8ad9b] shadow-xl dark:bg-[#090d16] dark:text-gray-200 dark:border-gray-800 dark:shadow-2xl overflow-hidden animate-in fade-in duration-200">
             {/* Terminal Window Header Bar */}
-            <div className="px-4 py-3 bg-[#0d1322] border-b border-gray-800 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-gray-400">
+            <div className="px-4 py-3 bg-[#c5bca9] border-b border-[#b8ad9b] dark:bg-[#0d1322] dark:border-gray-800 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-stone-700 dark:text-gray-400">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
                 <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block" />
                 <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block" />
-                <span className="ml-2 text-gray-200 font-semibold truncate max-w-[200px] sm:max-w-none">
+                <span className="ml-2 text-stone-900 dark:text-gray-200 font-semibold truncate max-w-[200px] sm:max-w-none">
                   {active.command}
                 </span>
               </div>
-              <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/20">
+              <span className="text-[11px] font-mono text-emerald-800 bg-emerald-700/15 border border-emerald-700/30 dark:text-emerald-400 dark:bg-emerald-950/40 dark:border-emerald-500/20 px-2 py-0.5 rounded font-bold">
                 {active.exitCodeDesc.split('·')[0] || 'Live Output'}
               </span>
             </div>
 
             {/* Sub-toolbar for inspect view */}
             {selectedCmd === 'inspect' && (
-              <div className="p-2.5 bg-[#111728] border-b border-gray-800 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
-                <span className="text-[11px] text-gray-400">TUI View Modes:</span>
+              <div className="p-2.5 bg-[#c8bfaf] border-b border-[#b8ad9b] dark:bg-[#111728] dark:border-gray-800 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+                <span className="text-[11px] text-stone-700 dark:text-gray-400 font-medium">TUI View Modes:</span>
                 <div className="flex flex-wrap items-center gap-1.5">
                   <button
                     onClick={() => setInspectorSubView('callstack')}
                     className={`px-2 py-1 rounded text-[11px] flex items-center gap-1.5 transition-all ${
                       inspectorSubView === 'callstack'
-                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 font-bold'
-                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                        ? 'bg-cyan-500/20 text-cyan-900 border border-cyan-600/50 dark:text-cyan-300 dark:border-cyan-500/50 font-bold'
+                        : 'bg-stone-900/5 text-stone-700 hover:bg-stone-900/10 border border-stone-400/30 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:border-transparent'
                     }`}
                   >
-                    <kbd className="px-1 py-0.2 bg-black/50 rounded text-[10px]">Tab</kbd>
+                    <kbd className="px-1 py-0.2 bg-stone-900/10 dark:bg-black/50 rounded text-[10px]">Tab</kbd>
                     <span>Call Stacks</span>
                   </button>
                   <button
                     onClick={() => setInspectorSubView('proof')}
                     className={`px-2 py-1 rounded text-[11px] flex items-center gap-1.5 transition-all ${
                       inspectorSubView === 'proof'
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/50 font-bold'
-                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                        ? 'bg-amber-500/20 text-amber-900 border border-amber-600/50 dark:text-amber-300 dark:border-amber-500/50 font-bold'
+                        : 'bg-stone-900/5 text-stone-700 hover:bg-stone-900/10 border border-stone-400/30 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:border-transparent'
                     }`}
                   >
-                    <kbd className="px-1 py-0.2 bg-black/50 rounded text-[10px]">p</kbd>
+                    <kbd className="px-1 py-0.2 bg-stone-900/10 dark:bg-black/50 rounded text-[10px]">p</kbd>
                     <span>Crash Proof</span>
                   </button>
                   <button
                     onClick={() => setInspectorSubView('fingerprint')}
                     className={`px-2 py-1 rounded text-[11px] flex items-center gap-1.5 transition-all ${
                       inspectorSubView === 'fingerprint'
-                        ? 'bg-purple-500/20 text-purple-300 border border-purple-500/50 font-bold'
-                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                        ? 'bg-purple-500/20 text-purple-900 border border-purple-600/50 dark:text-purple-300 dark:border-purple-500/50 font-bold'
+                        : 'bg-stone-900/5 text-stone-700 hover:bg-stone-900/10 border border-stone-400/30 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:border-transparent'
                     }`}
                   >
-                    <kbd className="px-1 py-0.2 bg-black/50 rounded text-[10px]">f</kbd>
+                    <kbd className="px-1 py-0.2 bg-stone-900/10 dark:bg-black/50 rounded text-[10px]">f</kbd>
                     <span>11-D Matrix</span>
                   </button>
                   <button
                     onClick={() => setInspectorSubView('autofix')}
                     className={`px-2 py-1 rounded text-[11px] flex items-center gap-1.5 transition-all ${
                       inspectorSubView === 'autofix'
-                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 font-bold'
-                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                        ? 'bg-emerald-500/20 text-emerald-900 border border-emerald-600/50 dark:text-emerald-300 dark:border-emerald-500/50 font-bold'
+                        : 'bg-stone-900/5 text-stone-700 hover:bg-stone-900/10 border border-stone-400/30 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:border-transparent'
                     }`}
                   >
-                    <kbd className="px-1 py-0.2 bg-black/50 rounded text-[10px]">a</kbd>
+                    <kbd className="px-1 py-0.2 bg-stone-900/10 dark:bg-black/50 rounded text-[10px]">a</kbd>
                     <span>Auto-Fix</span>
                   </button>
                 </div>
@@ -422,10 +422,10 @@ export default function CliExperience() {
             )}
 
             {/* Terminal Body Content */}
-            <div className="p-4 sm:p-6 font-mono text-[11px] sm:text-xs leading-relaxed text-gray-200 overflow-x-auto min-h-[260px]">
+            <div className="p-4 sm:p-6 font-mono text-[11px] sm:text-xs leading-relaxed text-stone-900 dark:text-gray-200 overflow-x-auto min-h-[260px]">
               {selectedCmd === 'analyze' && (
                 <div className="space-y-3">
-                  <div className="text-cyan-400 font-bold">
+                  <div className="text-cyan-900 dark:text-cyan-400 font-bold">
                     ══════════════════════════════════════════════════════════════════
                     <br />
                     &nbsp;&nbsp;CHANGE FIREWALL &bull; Behavior-Aware Change Intelligence Engine
@@ -433,21 +433,21 @@ export default function CliExperience() {
                     ══════════════════════════════════════════════════════════════════
                   </div>
                   <div>
-                    Files Changed: <span className="text-white font-bold">15 (+596 / -120)</span> &bull; Behavioral Shifts:{' '}
-                    <span className="text-yellow-400 font-bold">2</span> &bull; Overall Risk:{' '}
-                    <span className="text-emerald-400 font-bold">20 / 100 [LOW RISK]</span>
+                    Files Changed: <span className="text-stone-950 dark:text-white font-bold">15 (+596 / -120)</span> &bull; Behavioral Shifts:{' '}
+                    <span className="text-amber-900 dark:text-yellow-400 font-bold">2</span> &bull; Overall Risk:{' '}
+                    <span className="text-emerald-800 dark:text-emerald-400 font-bold">20 / 100 [LOW RISK]</span>
                   </div>
-                  <div className="text-gray-500">──────────────────────────────────────────────────────────────────</div>
-                  <div className="text-gray-400 font-bold">DETECTED BEHAVIORAL CONTRACT SHIFTS:</div>
+                  <div className="text-stone-500 dark:text-gray-500">──────────────────────────────────────────────────────────────────</div>
+                  <div className="text-stone-700 dark:text-gray-400 font-bold">DETECTED BEHAVIORAL CONTRACT SHIFTS:</div>
                   <div className="space-y-1">
-                    <div className="text-yellow-400">
+                    <div className="text-amber-900 dark:text-yellow-400">
                       &bull; [LOW] Export Extended: formatBehaviorGraphAscii (src/core/graph/behavior-graph.ts)
                     </div>
-                    <div className="text-amber-400">
+                    <div className="text-amber-900 dark:text-amber-400">
                       &bull; [MEDIUM] Export Contract Changed: BehaviorRole (src/types/index.ts)
                     </div>
                   </div>
-                  <div className="mt-3 p-2.5 rounded bg-emerald-950/30 border border-emerald-500/30 text-emerald-300">
+                  <div className="mt-3 p-2.5 rounded bg-emerald-500/15 border border-emerald-600/40 text-emerald-950 dark:bg-emerald-950/30 dark:border-emerald-500/30 dark:text-emerald-300 font-medium">
                     &check; SAFE TO MERGE &bull; Zero fatal symbolic crash proofs. Low downstream caller churn.
                   </div>
                 </div>
@@ -455,36 +455,36 @@ export default function CliExperience() {
 
               {selectedCmd === 'audit-agent' && (
                 <div className="space-y-3">
-                  <div className="text-cyan-400 font-bold">
+                  <div className="text-cyan-900 dark:text-cyan-400 font-bold">
                     ══════════════════════════════════════════════════════════════════
                     <br />
                     &nbsp;&nbsp;AI AGENT INTENT VS REALITY DRIFT VERIFIER
                     <br />
                     ══════════════════════════════════════════════════════════════════
                   </div>
-                  <div className="text-gray-300">
-                    Claimed Intent: <span className="text-amber-300">&quot;Fix button padding and header colors&quot;</span>
+                  <div className="text-stone-800 dark:text-gray-300">
+                    Claimed Intent: <span className="text-amber-900 dark:text-amber-300 font-semibold">&quot;Fix button padding and header colors&quot;</span>
                     <br />
-                    Inferred Scope: <span className="text-cyan-300">UI_STYLING (Presentation Layer Only)</span>
+                    Inferred Scope: <span className="text-cyan-900 dark:text-cyan-300 font-semibold">UI_STYLING (Presentation Layer Only)</span>
                   </div>
-                  <div className="text-gray-500">──────────────────────────────────────────────────────────────────</div>
-                  <div className="text-red-400 font-bold">
+                  <div className="text-stone-500 dark:text-gray-500">──────────────────────────────────────────────────────────────────</div>
+                  <div className="text-red-800 dark:text-red-400 font-bold">
                     &bull; UNANNOUNCED CONTRACT MUTATIONS DETECTED (16 files altered):
                   </div>
-                  <div className="text-gray-300 space-y-0.5 text-[11px]">
+                  <div className="text-stone-800 dark:text-gray-300 space-y-0.5 text-[11px]">
                     <div>&nbsp;&nbsp;├── src/types/index.ts (Exported type BehaviorRole modified)</div>
                     <div>&nbsp;&nbsp;├── src/core/graph/behavior-graph.ts (Graph algorithm altered)</div>
                     <div>&nbsp;&nbsp;└── .github/workflows/change-firewall.yml (CI gate modified)</div>
                   </div>
-                  <div className="p-3 rounded bg-red-950/40 border border-red-500/40 text-red-300 space-y-1">
-                    <div className="font-bold flex items-center gap-1.5">
-                      <ShieldAlert className="w-4 h-4 text-red-400" />
+                  <div className="p-3 rounded bg-red-500/15 border border-red-600/40 text-red-950 dark:bg-red-950/40 dark:border-red-500/40 dark:text-red-300 space-y-1">
+                    <div className="font-bold flex items-center gap-1.5 text-red-800 dark:text-red-400">
+                      <ShieldAlert className="w-4 h-4 text-red-700 dark:text-red-400" />
                       <span>&bull; STEALTH MUTATION (Drift Score: 100%)</span>
                     </div>
-                    <div className="text-xs text-gray-300">
+                    <div className="text-xs text-stone-800 dark:text-gray-300">
                       Agent claimed pure UI styling, but modified core contracts and pipeline configurations. Merge blocked.
                     </div>
-                    <div className="text-[10px] text-red-400 font-mono">Process exited with Code 1</div>
+                    <div className="text-[10px] text-red-800 dark:text-red-400 font-mono font-semibold">Process exited with Code 1</div>
                   </div>
                 </div>
               )}
@@ -493,8 +493,8 @@ export default function CliExperience() {
                 <div>
                   {inspectorSubView === 'callstack' && (
                     <div className="space-y-2">
-                      <div className="text-cyan-400 font-bold">▼ 3-HOP DOWNSTREAM CALL STACK TRAVERSAL</div>
-                      <pre className="text-gray-300 leading-snug">
+                      <div className="text-cyan-900 dark:text-cyan-400 font-bold">▼ 3-HOP DOWNSTREAM CALL STACK TRAVERSAL</div>
+                      <pre className="text-stone-800 dark:text-gray-300 leading-snug">
 {`[Target] src/services/user.ts ➔ getUser()
   ├── [Hop 1 Direct Caller] src/api/routes/auth.ts:19
   │     └─ Invocation: const user = await getUser(id)
@@ -511,8 +511,8 @@ export default function CliExperience() {
 
                   {inspectorSubView === 'proof' && (
                     <div className="space-y-2">
-                      <div className="text-amber-400 font-bold">▼ DETERMINISTIC RUNTIME CRASH PROOF</div>
-                      <pre className="text-gray-300 leading-snug">
+                      <div className="text-amber-900 dark:text-amber-400 font-bold">▼ DETERMINISTIC RUNTIME CRASH PROOF</div>
+                      <pre className="text-stone-800 dark:text-gray-300 leading-snug">
 {`Simulated Exception: TypeError: Cannot read properties of null (reading 'role')
 Crash Site:          src/api/routes/auth.ts:24
 
@@ -527,19 +527,19 @@ Mathematical Guarantee: 100% Deterministic Reproducibility.`}</pre>
 
                   {inspectorSubView === 'fingerprint' && (
                     <div className="space-y-2">
-                      <div className="text-purple-400 font-bold">▼ 11-DIMENSIONAL FINGERPRINT ACTIVE VECTORS</div>
+                      <div className="text-purple-900 dark:text-purple-400 font-bold">▼ 11-DIMENSIONAL FINGERPRINT ACTIVE VECTORS</div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs py-1">
-                        <div className="p-2 rounded bg-gray-900 border border-gray-800">
-                          <span className="text-cyan-400 font-bold">&bull; API CONTRACT:</span> Shifted return schema
+                        <div className="p-2 rounded bg-stone-900/5 dark:bg-gray-900 border border-stone-400/40 dark:border-gray-800 text-stone-800 dark:text-gray-300">
+                          <span className="text-cyan-900 dark:text-cyan-400 font-bold">&bull; API CONTRACT:</span> Shifted return schema
                         </div>
-                        <div className="p-2 rounded bg-gray-900 border border-gray-800">
-                          <span className="text-red-400 font-bold">&bull; NULLABILITY:</span> Widened to null
+                        <div className="p-2 rounded bg-stone-900/5 dark:bg-gray-900 border border-stone-400/40 dark:border-gray-800 text-stone-800 dark:text-gray-300">
+                          <span className="text-red-800 dark:text-red-400 font-bold">&bull; NULLABILITY:</span> Widened to null
                         </div>
-                        <div className="p-2 rounded bg-gray-900 border border-gray-800">
-                          <span className="text-amber-400 font-bold">&bull; DATA SHAPE:</span> Direct property dereference
+                        <div className="p-2 rounded bg-stone-900/5 dark:bg-gray-900 border border-stone-400/40 dark:border-gray-800 text-stone-800 dark:text-gray-300">
+                          <span className="text-amber-900 dark:text-amber-400 font-bold">&bull; DATA SHAPE:</span> Direct property dereference
                         </div>
-                        <div className="p-2 rounded bg-gray-900 border border-gray-800">
-                          <span className="text-emerald-400 font-bold">&bull; TEST COVERAGE:</span> 0 caller specs updated
+                        <div className="p-2 rounded bg-stone-900/5 dark:bg-gray-900 border border-stone-400/40 dark:border-gray-800 text-stone-800 dark:text-gray-300">
+                          <span className="text-emerald-800 dark:text-emerald-400 font-bold">&bull; TEST COVERAGE:</span> 0 caller specs updated
                         </div>
                       </div>
                     </div>
@@ -547,13 +547,13 @@ Mathematical Guarantee: 100% Deterministic Reproducibility.`}</pre>
 
                   {inspectorSubView === 'autofix' && (
                     <div className="space-y-2">
-                      <div className="text-emerald-400 font-bold">▼ PROPOSED 1-LINE CALLER AUTO-FIX PATCH</div>
-                      <div className="p-3 rounded bg-gray-900 border border-gray-800">
-                        <div className="text-gray-400 mb-1">// In src/api/routes/auth.ts:24</div>
-                        <div className="text-red-400">{`- return NextResponse.json({ role: user.role });`}</div>
-                        <div className="text-emerald-400 font-bold">{`+ return NextResponse.json({ role: user?.role ?? 'guest' });`}</div>
+                      <div className="text-emerald-800 dark:text-emerald-400 font-bold">▼ PROPOSED 1-LINE CALLER AUTO-FIX PATCH</div>
+                      <div className="p-3 rounded bg-stone-900/5 dark:bg-gray-900 border border-stone-400/40 dark:border-gray-800">
+                        <div className="text-stone-600 dark:text-gray-400 mb-1">// In src/api/routes/auth.ts:24</div>
+                        <div className="text-red-800 dark:text-red-400 font-mono">{`- return NextResponse.json({ role: user.role });`}</div>
+                        <div className="text-emerald-800 dark:text-emerald-400 font-bold font-mono">{`+ return NextResponse.json({ role: user?.role ?? 'guest' });`}</div>
                       </div>
-                      <div className="text-gray-400 text-[11px]">Press [c] in terminal to copy auto-fix patch directly.</div>
+                      <div className="text-stone-600 dark:text-gray-400 text-[11px] font-medium">Press [c] in terminal to copy auto-fix patch directly.</div>
                     </div>
                   )}
                 </div>
@@ -561,18 +561,18 @@ Mathematical Guarantee: 100% Deterministic Reproducibility.`}</pre>
 
               {selectedCmd === 'preflight' && (
                 <div className="space-y-3">
-                  <div className="text-amber-400 font-bold">
+                  <div className="text-amber-900 dark:text-amber-400 font-bold">
                     &bull; CHANGE FIREWALL &bull; Pre-Commit Sanity Check (50ms)
                   </div>
-                  <div className="text-gray-300">
+                  <div className="text-stone-800 dark:text-gray-300">
                     Inspecting 3 staged files (git diff --cached)...
                   </div>
-                  <div className="text-gray-300 space-y-0.5">
+                  <div className="text-stone-800 dark:text-gray-300 space-y-0.5">
                     <div>&check; src/client/api.ts &mdash; Clean AST diff</div>
                     <div>&check; src/components/Header.tsx &mdash; Clean AST diff</div>
                     <div>&check; src/types/user.ts &mdash; Non-breaking field addition</div>
                   </div>
-                  <div className="p-2.5 rounded bg-emerald-950/30 border border-emerald-500/30 text-emerald-300 font-bold">
+                  <div className="p-2.5 rounded bg-emerald-500/15 border border-emerald-600/40 text-emerald-950 dark:bg-emerald-950/30 dark:border-emerald-500/30 dark:text-emerald-300 font-bold">
                     &check; PREFLIGHT PASSED &bull; Zero contract breaks. Safe to commit. (Elapsed: 44ms)
                   </div>
                 </div>
@@ -580,10 +580,10 @@ Mathematical Guarantee: 100% Deterministic Reproducibility.`}</pre>
 
               {selectedCmd === 'graph' && (
                 <div className="space-y-2">
-                  <div className="text-cyan-400 font-bold">
+                  <div className="text-cyan-900 dark:text-cyan-400 font-bold">
                     BEHAVIOR GRAPH: src/models/subscription.ts
                   </div>
-                  <pre className="text-gray-300 leading-snug">
+                  <pre className="text-stone-800 dark:text-gray-300 leading-snug">
 {`┌─────────────────────────────────────────────────────────────┐
 │ TARGET: src/models/subscription.ts                          │
 │ ROLE:   INTERNAL LOGIC / DATA MODEL                         │
@@ -601,15 +601,15 @@ Mathematical Guarantee: 100% Deterministic Reproducibility.`}</pre>
 
               {selectedCmd === 'impact' && (
                 <div className="space-y-2">
-                  <div className="text-purple-400 font-bold">
+                  <div className="text-purple-900 dark:text-purple-400 font-bold">
                     SYMBOL BLAST RADIUS: &quot;getUser&quot;
                   </div>
-                  <div className="text-gray-300">
-                    Export defined in: <span className="text-white">src/services/user.ts:14</span>
+                  <div className="text-stone-800 dark:text-gray-300">
+                    Export defined in: <span className="text-stone-950 dark:text-white font-semibold">src/services/user.ts:14</span>
                   </div>
-                  <div className="text-gray-400 font-bold mt-2">DOWNSTREAM CONSUMERS (3 total):</div>
-                  <div className="space-y-1 text-gray-300">
-                    <div>├── src/api/routes/auth.ts:19 &bull; <span className="text-red-400 font-semibold">DIRECT DEREFERENCE (user.role)</span></div>
+                  <div className="text-stone-700 dark:text-gray-400 font-bold mt-2">DOWNSTREAM CONSUMERS (3 total):</div>
+                  <div className="space-y-1 text-stone-800 dark:text-gray-300">
+                    <div>├── src/api/routes/auth.ts:19 &bull; <span className="text-red-800 dark:text-red-400 font-semibold">DIRECT DEREFERENCE (user.role)</span></div>
                     <div>├── src/client/components/UserBadge.tsx:8 &bull; Prop binding</div>
                     <div>└── src/workers/sessionPurge.ts:44 &bull; Scheduled cleanup worker</div>
                   </div>
@@ -618,16 +618,16 @@ Mathematical Guarantee: 100% Deterministic Reproducibility.`}</pre>
 
               {selectedCmd === 'memory' && (
                 <div className="space-y-2">
-                  <div className="text-indigo-400 font-bold">
+                  <div className="text-indigo-900 dark:text-indigo-400 font-bold">
                     PERSISTENT FIREWALL MEMORY STATUS (.firewall/memory/)
                   </div>
-                  <div className="text-gray-300 space-y-1">
-                    <div>Recorded Invariants: <span className="text-emerald-400 font-bold">25 verified symbol/route contracts</span></div>
-                    <div>Baseline Commit:     <span className="text-white font-mono">7b561e6</span></div>
-                    <div>Stability Rating:    <span className="text-emerald-400 font-bold">HIGH</span></div>
-                    <div>Last Verified:       <span className="text-gray-400">2026-09-09T06:07:25Z</span></div>
+                  <div className="text-stone-800 dark:text-gray-300 space-y-1">
+                    <div>Recorded Invariants: <span className="text-emerald-800 dark:text-emerald-400 font-bold">25 verified symbol/route contracts</span></div>
+                    <div>Baseline Commit:     <span className="text-stone-950 dark:text-white font-mono font-semibold">7b561e6</span></div>
+                    <div>Stability Rating:    <span className="text-emerald-800 dark:text-emerald-400 font-bold">HIGH</span></div>
+                    <div>Last Verified:       <span className="text-stone-600 dark:text-gray-400">2026-09-09T06:07:25Z</span></div>
                   </div>
-                  <div className="p-2 rounded bg-indigo-950/30 border border-indigo-500/30 text-indigo-300 text-[11px]">
+                  <div className="p-2 rounded bg-indigo-500/15 border border-indigo-600/40 text-indigo-950 dark:bg-indigo-950/30 dark:border-indigo-500/30 dark:text-indigo-300 text-[11px] font-medium">
                     &check; Working tree contracts strictly conform to recorded baseline.
                   </div>
                 </div>
@@ -635,35 +635,35 @@ Mathematical Guarantee: 100% Deterministic Reproducibility.`}</pre>
 
               {selectedCmd === 'watch' && (
                 <div className="space-y-2">
-                  <div className="text-pink-400 font-bold">
+                  <div className="text-rose-900 dark:text-pink-400 font-bold">
                     CHANGE FIREWALL &bull; Live Background Daemon Active
                   </div>
-                  <div className="text-gray-400">
+                  <div className="text-stone-700 dark:text-gray-400">
                     Watching 14 TypeScript files in src/... (Ready for file saves)
                   </div>
-                  <div className="text-gray-300 space-y-1 pt-2">
-                    <div>[12:44:18] File saved: <span className="text-white">src/routes/auth.ts</span></div>
-                    <div>[12:44:18] AST diff re-analyzed in <span className="text-emerald-400 font-bold">18ms</span> &bull; 0 shifts &bull; Risk: 0/100</div>
-                    <div className="text-emerald-400 font-semibold">&check; Invariants clean.</div>
+                  <div className="text-stone-800 dark:text-gray-300 space-y-1 pt-2">
+                    <div>[12:44:18] File saved: <span className="text-stone-950 dark:text-white font-semibold">src/routes/auth.ts</span></div>
+                    <div>[12:44:18] AST diff re-analyzed in <span className="text-emerald-800 dark:text-emerald-400 font-bold">18ms</span> &bull; 0 shifts &bull; Risk: 0/100</div>
+                    <div className="text-emerald-800 dark:text-emerald-400 font-semibold">&check; Invariants clean.</div>
                   </div>
                 </div>
               )}
 
               {selectedCmd === 'gate' && (
                 <div className="space-y-3">
-                  <div className="text-rose-400 font-bold">
+                  <div className="text-rose-900 dark:text-rose-400 font-bold">
                     CHANGE FIREWALL CI/CD MERGE GATE
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/30">
-                      <div className="font-bold text-emerald-400 mb-1">EXIT CODE 0 &bull; APPROVED</div>
-                      <div className="text-gray-300 text-xs font-sans">
+                    <div className="p-3 rounded-xl bg-emerald-500/15 border border-emerald-600/40 dark:bg-emerald-950/30 dark:border-emerald-500/30">
+                      <div className="font-bold text-emerald-800 dark:text-emerald-400 mb-1">EXIT CODE 0 &bull; APPROVED</div>
+                      <div className="text-stone-800 dark:text-gray-300 text-xs font-sans">
                         Risk score below threshold and 0 fatal crash proofs. PR passes merge gate immediately.
                       </div>
                     </div>
-                    <div className="p-3 rounded-xl bg-red-950/30 border border-red-500/30">
-                      <div className="font-bold text-red-400 mb-1">EXIT CODE 1 &bull; BLOCKED</div>
-                      <div className="text-gray-300 text-xs font-sans">
+                    <div className="p-3 rounded-xl bg-red-500/15 border border-red-600/40 dark:bg-red-950/30 dark:border-red-500/30">
+                      <div className="font-bold text-red-800 dark:text-red-400 mb-1">EXIT CODE 1 &bull; BLOCKED</div>
+                      <div className="text-stone-800 dark:text-gray-300 text-xs font-sans">
                         Contract regression or crash proof detected. Pull request is blocked from merging.
                       </div>
                     </div>
@@ -673,19 +673,19 @@ Mathematical Guarantee: 100% Deterministic Reproducibility.`}</pre>
 
               {selectedCmd === 'mcp' && (
                 <div className="space-y-2">
-                  <div className="text-sky-400 font-bold">
+                  <div className="text-sky-900 dark:text-sky-400 font-bold">
                     CHANGE FIREWALL &bull; Model Context Protocol (MCP) Server
                   </div>
-                  <div className="text-gray-300">
+                  <div className="text-stone-800 dark:text-gray-300">
                     Listening on stdio (JSON-RPC 2.0)...
                   </div>
-                  <div className="text-gray-400 space-y-1 pt-2">
-                    <div>&check; Exposed Tool: <span className="text-white">change_firewall_analyze_changes</span></div>
-                    <div>&check; Exposed Tool: <span className="text-white">change_firewall_get_downstream_impact</span></div>
-                    <div>&check; Exposed Tool: <span className="text-white">change_firewall_audit_agent_intent</span></div>
-                    <div>&check; Exposed Tool: <span className="text-white">change_firewall_prove_runtime_crash</span></div>
+                  <div className="text-stone-700 dark:text-gray-400 space-y-1 pt-2">
+                    <div>&check; Exposed Tool: <span className="text-stone-950 dark:text-white font-semibold">change_firewall_analyze_changes</span></div>
+                    <div>&check; Exposed Tool: <span className="text-stone-950 dark:text-white font-semibold">change_firewall_get_downstream_impact</span></div>
+                    <div>&check; Exposed Tool: <span className="text-stone-950 dark:text-white font-semibold">change_firewall_audit_agent_intent</span></div>
+                    <div>&check; Exposed Tool: <span className="text-stone-950 dark:text-white font-semibold">change_firewall_prove_runtime_crash</span></div>
                   </div>
-                  <div className="text-emerald-400 font-semibold pt-1">
+                  <div className="text-emerald-800 dark:text-emerald-400 font-semibold pt-1">
                     &bull; Connected to Claude Desktop & Cursor
                   </div>
                 </div>
@@ -693,17 +693,17 @@ Mathematical Guarantee: 100% Deterministic Reproducibility.`}</pre>
             </div>
 
             {/* Key Flags Footer Strip */}
-            <div className="px-4 py-3 bg-[#0d1322] border-t border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-              <span className="text-gray-400 text-[11px] uppercase tracking-wider">Available Flags:</span>
+            <div className="px-4 py-3 bg-[#c5bca9] border-t border-[#b8ad9b] dark:bg-[#0d1322] dark:border-gray-800 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+              <span className="text-stone-700 dark:text-gray-400 text-[11px] uppercase tracking-wider font-semibold">Available Flags:</span>
               <div className="flex flex-wrap items-center gap-2">
                 {active.keyFlags.map((kf, i) => (
                   <span
                     key={i}
-                    className="text-[11px] px-2 py-0.5 rounded bg-gray-800/80 border border-gray-700 text-gray-300"
+                    className="text-[11px] px-2 py-0.5 rounded bg-stone-900/5 border border-stone-400/40 text-stone-800 dark:bg-gray-800/80 dark:border-gray-700 dark:text-gray-300"
                     title={kf.desc}
                   >
-                    <code className="text-cyan-400 font-bold">{kf.flag}</code>{' '}
-                    <span className="text-gray-400 hidden sm:inline">&mdash; {kf.desc}</span>
+                    <code className="text-cyan-900 dark:text-cyan-400 font-bold">{kf.flag}</code>{' '}
+                    <span className="text-stone-600 dark:text-gray-400 hidden sm:inline">&mdash; {kf.desc}</span>
                   </span>
                 ))}
               </div>

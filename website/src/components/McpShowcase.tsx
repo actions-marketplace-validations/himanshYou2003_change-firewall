@@ -326,26 +326,26 @@ function renderJsonValue(val: string) {
     if (!token) return null;
     if (token.startsWith('"') && token.endsWith('"')) {
       return (
-        <span key={i} className="text-emerald-300">
+        <span key={i} className="text-emerald-800 dark:text-emerald-300 font-medium">
           {token}
         </span>
       );
     }
     if (['{', '}', '[', ']', ','].includes(token)) {
       return (
-        <span key={i} className="text-slate-400 font-bold">
+        <span key={i} className="text-stone-700 dark:text-slate-400 font-bold">
           {token}
         </span>
       );
     }
     if (token === 'true' || token === 'false') {
       return (
-        <span key={i} className="text-amber-300 font-semibold">
+        <span key={i} className="text-amber-800 dark:text-amber-300 font-bold">
           {token}
         </span>
       );
     }
-    return <span key={i} className="text-slate-200">{token}</span>;
+    return <span key={i} className="text-stone-900 dark:text-slate-200 font-medium">{token}</span>;
   });
 }
 
@@ -356,8 +356,8 @@ function renderJsonLine(line: string) {
     return (
       <>
         {indent}
-        <span className="text-sky-300 font-medium">{key}</span>
-        <span className="text-slate-400">: </span>
+        <span className="text-sky-900 dark:text-sky-300 font-semibold">{key}</span>
+        <span className="text-stone-700 dark:text-slate-400 font-bold">: </span>
         {renderJsonValue(rest)}
       </>
     );
@@ -367,17 +367,17 @@ function renderJsonLine(line: string) {
 
 function renderMarkdownLine(line: string) {
   if (line.startsWith('###')) {
-    return <span className="text-purple-300 font-semibold">{line}</span>;
+    return <span className="text-purple-900 dark:text-purple-300 font-bold">{line}</span>;
   }
   if (line.match(/^\d+\./)) {
     return (
       <span>
-        <span className="text-sky-300 font-bold">{line.slice(0, 3)}</span>
-        <span className="text-slate-200">{line.slice(3)}</span>
+        <span className="text-sky-900 dark:text-sky-300 font-bold">{line.slice(0, 3)}</span>
+        <span className="text-stone-900 dark:text-slate-200">{line.slice(3)}</span>
       </span>
     );
   }
-  return <span className="text-slate-200">{line}</span>;
+  return <span className="text-stone-900 dark:text-slate-200">{line}</span>;
 }
 
 function renderSyntaxHighlighted(code: string, isJson: boolean) {
@@ -385,11 +385,11 @@ function renderSyntaxHighlighted(code: string, isJson: boolean) {
   return (
     <div className="font-mono text-xs leading-relaxed py-3 overflow-x-auto select-text touch-pan-x">
       {lines.map((line, lineIndex) => (
-        <div key={lineIndex} className="flex hover:bg-white/[0.03] px-2.5 sm:px-3.5 py-0.5 group">
-          <span className="w-5 sm:w-6 shrink-0 text-right pr-2 sm:pr-3 select-none text-slate-500/70 font-mono text-[10px] sm:text-[11px] group-hover:text-slate-400 border-r border-slate-800/80 mr-2 sm:mr-3">
+        <div key={lineIndex} className="flex hover:bg-stone-900/[0.04] dark:hover:bg-white/[0.03] px-2.5 sm:px-3.5 py-0.5 group">
+          <span className="w-5 sm:w-6 shrink-0 text-right pr-2 sm:pr-3 select-none text-stone-500 dark:text-slate-500/70 font-mono text-[10px] sm:text-[11px] group-hover:text-stone-800 dark:group-hover:text-slate-400 border-r border-stone-400/50 dark:border-slate-800/80 mr-2 sm:mr-3 font-semibold">
             {lineIndex + 1}
           </span>
-          <span className="flex-1 whitespace-pre">
+          <span className="flex-1 whitespace-pre font-mono">
             {isJson ? renderJsonLine(line) : renderMarkdownLine(line)}
           </span>
         </div>
@@ -598,29 +598,29 @@ export default function McpShowcase() {
                 <div className="code-editor-header h-9 px-3.5 flex items-center justify-between select-none text-xs font-mono">
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1.5 mr-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                     </div>
-                    <span className="text-[11px] text-slate-300 font-semibold flex items-center gap-1.5">
-                      <Code2 className="w-3.5 h-3.5 text-sky-400" />
+                    <span className="text-[11px] text-stone-800 dark:text-slate-300 font-semibold flex items-center gap-1.5">
+                      <Code2 className="w-3.5 h-3.5 text-sky-700 dark:text-sky-400" />
                       <span>{activePlatform.id === 'copilot' ? 'AGENTS.md' : 'mcp_config.json'}</span>
                     </span>
                   </div>
 
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition-colors"
+                    className="flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded bg-stone-900/5 hover:bg-stone-900/10 text-stone-800 hover:text-stone-950 border border-stone-400/40 dark:bg-white/5 dark:hover:bg-white/10 dark:text-slate-300 dark:hover:text-white dark:border-white/10 transition-colors"
                     title="Copy configuration"
                   >
                     {copied ? (
                       <>
-                        <Check className="w-3 h-3 text-emerald-400" />
-                        <span className="text-emerald-400">Copied</span>
+                        <Check className="w-3 h-3 text-emerald-700 dark:text-emerald-400" />
+                        <span className="text-emerald-700 dark:text-emerald-400 font-semibold">Copied</span>
                       </>
                     ) : (
                       <>
-                        <Copy className="w-3 h-3 text-slate-400" />
+                        <Copy className="w-3 h-3 text-stone-600 dark:text-slate-400" />
                         <span>Copy</span>
                       </>
                     )}
@@ -652,48 +652,48 @@ export default function McpShowcase() {
 
               {/* Simulated Window */}
               <div className="code-editor-box rounded-xl p-3.5 space-y-3 shadow-sm">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-700/60">
+                <div className="flex items-center justify-between pb-2 border-b border-stone-400/40 dark:border-slate-700/60">
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1 mr-1">
-                      <span className="w-2 h-2 rounded-full bg-slate-600" />
-                      <span className="w-2 h-2 rounded-full bg-slate-600" />
-                      <span className="w-2 h-2 rounded-full bg-slate-600" />
+                      <span className="w-2 h-2 rounded-full bg-stone-400 dark:bg-slate-600" />
+                      <span className="w-2 h-2 rounded-full bg-stone-400 dark:bg-slate-600" />
+                      <span className="w-2 h-2 rounded-full bg-stone-400 dark:bg-slate-600" />
                     </div>
-                    <span className="text-xs font-medium text-white font-mono">
+                    <span className="text-xs font-semibold text-stone-900 dark:text-white font-mono">
                       {activePlatform.mockup.platformTitle}
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono text-slate-400">
+                  <span className="text-[10px] font-mono text-stone-600 dark:text-slate-400 font-medium">
                     {activePlatform.mockup.executionTime}
                   </span>
                 </div>
 
                 <div className="space-y-1">
-                  <div className="text-[10px] font-mono text-slate-400">User Input</div>
-                  <div className="text-xs text-slate-200 bg-white/[0.02] p-2.5 rounded border border-white/[0.05]">
+                  <div className="text-[10px] font-mono text-stone-600 dark:text-slate-400 font-medium">User Input</div>
+                  <div className="text-xs text-stone-900 dark:text-slate-200 bg-stone-900/[0.04] dark:bg-white/[0.02] p-2.5 rounded border border-stone-400/30 dark:border-white/[0.05]">
                     &ldquo;{activePlatform.mockup.prompt}&rdquo;
                   </div>
                 </div>
 
                 <div className="space-y-1">
-                  <div className="text-[10px] font-mono text-slate-400 flex items-center gap-1">
-                    <Terminal className="w-3 h-3" />
+                  <div className="text-[10px] font-mono text-stone-600 dark:text-slate-400 flex items-center gap-1 font-medium">
+                    <Terminal className="w-3 h-3 text-stone-700 dark:text-slate-400" />
                     <span>Autonomous Tool Invocation</span>
                   </div>
-                  <div className="bg-white/[0.04] border border-white/[0.08] rounded p-2 text-xs font-mono text-slate-200 flex items-center justify-between">
+                  <div className="bg-stone-900/[0.04] dark:bg-white/[0.04] border border-stone-400/30 dark:border-white/[0.08] rounded p-2 text-xs font-mono text-stone-900 dark:text-slate-200 flex items-center justify-between">
                     <span>{activePlatform.mockup.toolCalled}</span>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700 dark:text-slate-400 shrink-0" />
                   </div>
                 </div>
 
                 <div className="space-y-1">
-                  <div className="text-[10px] font-mono text-slate-400">Deterministic Feedback</div>
-                  <div className="text-xs text-slate-300 font-mono bg-black/40 p-2.5 rounded border border-white/[0.05] space-y-1">
-                    <p className="text-white font-medium">{activePlatform.mockup.resultSummary}</p>
-                    <ul className="text-[11px] text-slate-400 space-y-0.5">
+                  <div className="text-[10px] font-mono text-stone-600 dark:text-slate-400 font-medium">Deterministic Feedback</div>
+                  <div className="text-xs text-stone-900 dark:text-slate-300 font-mono bg-stone-900/[0.05] dark:bg-black/40 p-2.5 rounded border border-stone-400/30 dark:border-white/[0.05] space-y-1">
+                    <p className="text-stone-950 dark:text-white font-semibold">{activePlatform.mockup.resultSummary}</p>
+                    <ul className="text-[11px] text-stone-700 dark:text-slate-400 space-y-0.5">
                       {activePlatform.mockup.details.map((d, idx) => (
                         <li key={idx} className="flex items-center gap-1.5">
-                          <span className="w-1 h-1 rounded-full bg-slate-500" />
+                          <span className="w-1 h-1 rounded-full bg-stone-500 dark:bg-slate-500" />
                           <span>{d}</span>
                         </li>
                       ))}
@@ -701,9 +701,9 @@ export default function McpShowcase() {
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-white/[0.06] flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-slate-400">Safety Gate Result:</span>
-                  <span className="text-slate-200 font-semibold px-2 py-0.5 rounded bg-white/[0.06] border border-white/10">
+                <div className="pt-2 border-t border-stone-400/30 dark:border-white/[0.06] flex items-center justify-between text-[11px] font-mono">
+                  <span className="text-stone-600 dark:text-slate-400 font-medium">Safety Gate Result:</span>
+                  <span className="text-stone-900 dark:text-slate-200 font-bold px-2 py-0.5 rounded bg-stone-900/[0.06] dark:bg-white/[0.06] border border-stone-400/40 dark:border-white/10">
                     {activePlatform.mockup.gateStatus}
                   </span>
                 </div>

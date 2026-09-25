@@ -250,15 +250,20 @@ Conversely, agents might claim changes were made that don't match the actual cod
 
 ```bash
 # 1. Audit a truthful, backwards-compatible intent prompt (Drift: 0% ALIGNED)
-npx change-firewall audit-agent -i "extend getInsurers with optional customInsurers default parameter"
+npx change-firewall audit-agent -i "extend getUserProfile with optional tenantId default parameter"
 
-# 2. Audit a feature change with declared signature changes
-npx change-firewall audit-agent -i "add real data to weightage calculator and update exported signatures"
+# 2. Audit a feature implementation with declared signature changes (Drift: 0% ALIGNED)
+npx change-firewall audit-agent -i "implement Stripe webhook handler and update billing export signatures"
 
-# 3. Detect ungrounded/gibberish claims (Zero semantic overlap -> 70% Drift STEALTH MUTATION)
-npx change-firewall audit-agent -i "have i added chinta ta ta tit it"
+# 3. Detect deceptive scope (AI claims minor styling while touching auth/database)
+npx change-firewall audit-agent -i "fix button styling and header colors"
+# If actual changes modified src/auth/jwt.ts -> Flags STEALTH_MUTATION (100% Drift, Blocks Merge)
 
-# 4. Automated GitHub Actions usage (audits against the PR title)
+# 4. Detect ungrounded / hallucinated claims (Zero semantic overlap with actual changes)
+npx change-firewall audit-agent -i "update documentation and fix typos in README"
+# If actual changes touched payment or checkout routes -> Flags STEALTH_MUTATION (70% Drift, Blocks Merge)
+
+# 5. Automated GitHub Actions usage (audits against the PR title)
 npx change-firewall audit-agent -i "${{ github.event.pull_request.title }}"
 ```
 
@@ -266,7 +271,7 @@ npx change-firewall audit-agent -i "${{ github.event.pull_request.title }}"
 
 ##### 1. Understanding Bidirectional Semantic Grounding
 `audit-agent` extracts **substantive tokens** by stripping away conversational filler and auxiliary verbs (`have`, `did`, `added`, `is`, `we`, `i`, `the`, etc.). The engine then verifies bidirectional alignment:
-- **Grounding Verification**: The substantive tokens in your prompt **must** have semantic overlap with the modified files, exported symbols, or architectural roles. If an intent claim shares 0 substantive keywords with the actual changes, Change Firewall flags an **`Unrelated Intent Claim`** with a **+70 penalty**, instantly triggering `STEALTH_MUTATION` and blocking the merge.
+- **Grounding Verification**: The substantive tokens in your prompt **must** have semantic overlap with the modified files, exported symbols, or architectural roles. If an intent claim shares 0 substantive keywords with the actual changes (e.g. claiming `"update documentation and fix typos in README"` when actual files modified are `src/services/payment.ts`), Change Firewall flags an **`Unrelated Intent Claim`** with a **+70 penalty**, instantly triggering `STEALTH_MUTATION` and blocking the merge.
 - **Unannounced Contract Shifts**: If public export contracts or function signatures are modified, but the prompt does not declare contract or signature changes, each unannounced breaking change incurs a **+35 penalty**.
 
 ##### 2. Solution A: Best Practice for Adding Parameters to Existing Functions
@@ -274,22 +279,23 @@ When an agent or developer adds new parameters to an existing exported function,
 
 ```typescript
 // ❌ Dangerous (Breaking Contract Change - Triggers HIGH Contract Shift):
-export function getInsurers(channel: string, customInsurers: string[])
+export function getUserProfile(id: string, tenantId: string)
 
 // ✅ Solution A (Backwards-Compatible Extension - 0% Contract Drift Penalty):
-export function getInsurers(channel: string, customInsurers: string[] = [])
+export function getUserProfile(id: string, tenantId: string = 'default')
 ```
 
-> **Why Solution A Works**: Giving new parameters a default value (`= null`, `= []`, or `= {}`) ensures existing callers continue functioning without modification. Change Firewall classifies this as a `LOW` backwards-compatible extension, resulting in **zero contract drift penalty**.
+> **Why Solution A Works**: Giving new parameters a default value (`= null`, `= []`, or `= 'default'`) ensures existing callers continue functioning without modification. Change Firewall classifies this as a `LOW` backwards-compatible extension, resulting in **zero contract drift penalty**.
 
 ##### 3. Prompting DOs and DON'Ts
 
 | Pattern | Prompt Example | Result & Why |
 | :--- | :--- | :--- |
-| 🟢 **DO (Specific & Truthful)** | `npx change-firewall audit-agent -i "extend getInsurers with optional customInsurers default parameter"` | **ALIGNED (0% Drift)**: Declares the exact symbol modified and specifies backwards-compatible intent. |
-| 🟢 **DO (Declare Contract Changes)** | `npx change-firewall audit-agent -i "refactor calculateWeightage and update public export signatures"` | **ALIGNED / MINOR DRIFT**: Acknowledges signature shifts, so unannounced contract penalties are bypassed. |
-| 🔴 **DON'T (Gibberish or Unrelated)** | `npx change-firewall audit-agent -i "have i added chinta ta ta tit it"` | **STEALTH_MUTATION (70% Drift)**: Substantive tokens have zero overlap with changed code. Flagged as ungrounded hallucination. |
-| 🔴 **DON'T (Conceal Breaking Changes)** | `npx change-firewall audit-agent -i "minor tweak to weightage calculator"` | **STEALTH_MUTATION (100% Drift)**: Claiming a minor tweak while mutating 9 public export contracts incurs 9 × 35 = 315 penalty points. |
+| 🟢 **DO (Specific & Truthful)** | `npx change-firewall audit-agent -i "extend getUserProfile with optional tenantId default parameter"` | **ALIGNED (0% Drift)**: Declares the exact symbol modified and specifies a backwards-compatible default parameter. |
+| 🟢 **DO (Declare Contract Changes)** | `npx change-firewall audit-agent -i "implement Stripe webhook and update billing export signatures"` | **ALIGNED / MINOR DRIFT**: Acknowledges public signature shifts, so unannounced contract penalties are bypassed. |
+| 🔴 **DON'T (Ungrounded / Hallucinated PR Title)** | `npx change-firewall audit-agent -i "update documentation and fix typos in README"` | **STEALTH_MUTATION (70% Drift)**: Substantive tokens (`documentation`, `typos`, `readme`) have zero semantic overlap with modified payment/checkout code. Flagged as ungrounded hallucination. |
+| 🔴 **DON'T (Deceptive Scope Drift)** | `npx change-firewall audit-agent -i "fix button styling and header colors"` | **STEALTH_MUTATION (100% Drift)**: Claiming presentation layer styling while secretly mutating core backend types, security middleware, or database models. |
+| 🔴 **DON'T (Conceal Breaking Changes)** | `npx change-firewall audit-agent -i "minor internal cleanup in user service"` | **STEALTH_MUTATION (100% Drift)**: Claiming a minor tweak while adding mandatory parameters to public export contracts incurs unannounced contract penalties (+35 per breaking export). |
 
 #### 📊 Drift Score & Verdicts:
 * **`ALIGNED` (0% Drift)**: Code mutations strictly match stated intent (exit `0`).

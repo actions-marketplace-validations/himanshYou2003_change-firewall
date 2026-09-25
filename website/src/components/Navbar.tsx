@@ -112,21 +112,21 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[var(--border-subtle)] bg-[var(--bg-main)] transition-colors duration-200 shadow-xs backdrop-blur-md">
-      <div className="w-full max-w-[1550px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div className="w-full max-w-[1550px] mx-auto px-3 sm:px-4 lg:px-6 h-[52px] flex items-center justify-between gap-2 sm:gap-4">
         {/* Brand Logo & Version */}
-        <div className="flex items-center gap-2.5 shrink-0">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden border border-orange-500/25 dark:border-[var(--border-subtle)] group-hover:border-orange-500/50 transition-colors bg-orange-500/[0.08] dark:bg-black flex items-center justify-center shadow-xs shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="relative w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-lg overflow-hidden border border-orange-500/25 dark:border-[var(--border-subtle)] group-hover:border-orange-500/50 transition-colors bg-orange-500/[0.08] dark:bg-black flex items-center justify-center shadow-xs shrink-0">
               <Image
                 src="/logo.png"
                 alt="Change Firewall Logo"
-                width={36}
-                height={36}
+                width={30}
+                height={30}
                 className="w-full h-full object-cover"
                 priority
               />
             </div>
-            <span className="font-extrabold text-base sm:text-lg tracking-tight text-[var(--text-primary)] whitespace-nowrap">
+            <span className="font-extrabold text-sm sm:text-[15px] tracking-tight text-[var(--text-primary)] whitespace-nowrap">
               Change Firewall
             </span>
           </Link>
@@ -135,14 +135,14 @@ export default function Navbar() {
             target="_blank"
             rel="noreferrer"
             title="View package on npm"
-            className="text-[10px] sm:text-[11px] font-mono font-medium px-2 py-0.5 rounded-md bg-[var(--surface-100)] hover:bg-[var(--surface-200)] text-[var(--text-muted)] hover:text-brand-cyan border border-[var(--border-subtle)] transition-colors whitespace-nowrap shrink-0"
+            className="text-[10px] font-mono font-medium px-1.5 py-0.5 rounded-md bg-[var(--surface-100)] hover:bg-[var(--surface-200)] text-[var(--text-muted)] hover:text-brand-cyan border border-[var(--border-subtle)] transition-colors whitespace-nowrap shrink-0"
           >
             v0.3.1
           </a>
         </div>
 
         {/* Desktop Navigation Links (Tablets & Desktops >= 768px) */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-[var(--text-secondary)]">
+        <nav className="hidden md:flex items-center gap-3.5 lg:gap-5 xl:gap-6 text-xs sm:text-[13px] font-medium text-[var(--text-secondary)]">
           {NAV_ITEMS.map((item, idx) => {
             const isDocsLink = item.href === '/docs';
             const activeDocs = isDocsLink && isDocs;
@@ -177,24 +177,24 @@ export default function Navbar() {
         </nav>
 
         {/* Action Buttons & Theme Switcher */}
-        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           {/* Quick Copy Command (Desktops >= 1200px) */}
           <button
             onClick={copyCommand}
-            className="hidden xl:flex items-center gap-2 px-3 py-1.5 text-xs font-mono rounded-xl bg-[var(--surface-100)] border border-[var(--border-subtle)] hover:border-brand-cyan/40 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shadow-xs group whitespace-nowrap shrink-0"
+            className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono rounded-lg bg-[var(--surface-100)] border border-[var(--border-subtle)] hover:border-brand-cyan/40 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all shadow-xs group whitespace-nowrap shrink-0"
             title="Click to copy quick start command"
           >
-            <Terminal className="w-3.5 h-3.5 text-brand-cyan shrink-0" />
+            <Terminal className="w-3 h-3 text-brand-cyan shrink-0" />
             <span className="text-[var(--text-primary)] font-medium">npx change-firewall</span>
-            <div className="flex items-center gap-1 pl-2 border-l border-[var(--border-subtle)] text-[11px] font-sans">
+            <div className="flex items-center gap-1 pl-1.5 border-l border-[var(--border-subtle)] text-[10px] font-sans">
               {copied ? (
                 <span className="text-brand-success font-semibold flex items-center gap-1">
-                  <Check className="w-3 h-3" />
+                  <Check className="w-2.5 h-2.5" />
                   Copied
                 </span>
               ) : (
                 <span className="text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors flex items-center gap-1">
-                  <Copy className="w-3 h-3 opacity-60" />
+                  <Copy className="w-2.5 h-2.5 opacity-60" />
                   <span>Copy</span>
                 </span>
               )}
@@ -206,12 +206,12 @@ export default function Navbar() {
             href="https://www.npmjs.com/package/change-firewall"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-[var(--surface-100)] border border-[var(--border-subtle)] hover:border-[#cb3837]/50 text-xs font-medium text-[var(--text-primary)] hover:bg-[var(--surface-200)] transition-all shadow-xs group shrink-0 whitespace-nowrap"
+            className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg bg-[var(--surface-100)] border border-[var(--border-subtle)] hover:border-[#cb3837]/50 text-[11px] font-medium text-[var(--text-primary)] hover:bg-[var(--surface-200)] transition-all shadow-xs group shrink-0 whitespace-nowrap"
             aria-label="NPM Package"
             title="View change-firewall on npm"
           >
             {/* White and Red NPM Design Icon */}
-            <span className="w-5 h-3.5 rounded-[2px] bg-[#cb3837] flex items-center justify-center px-0.5 shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+            <span className="w-4 h-3 rounded-[1px] bg-[#cb3837] flex items-center justify-center px-0.5 shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
               <svg viewBox="0 0 780 250" className="w-full h-full fill-white" aria-hidden="true">
                 <path d="M240,250h100v-50h100V0H240V250z M340,50h50v100h-50V50z M480,0v200h100V50h50v150h50V50h50v150h50V0H480z M0,200h100V50h50v150h50V0H0V200z" />
               </svg>
@@ -219,7 +219,7 @@ export default function Navbar() {
             <span className="hidden sm:inline font-mono text-[11px] font-semibold text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]">
               npm
             </span>
-            <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.2 rounded bg-[var(--surface-200)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+            <span className="hidden sm:inline-block text-[9px] font-mono px-1.5 py-0.2 rounded bg-[var(--surface-200)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
               v0.3.1
             </span>
           </a>
@@ -229,13 +229,13 @@ export default function Navbar() {
             href="https://github.com/himanshYou2003/change-firewall"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-[var(--surface-100)] border border-[var(--border-subtle)] hover:border-[var(--border-card)] text-xs font-medium text-[var(--text-primary)] hover:bg-[var(--surface-200)] transition-all shadow-xs group shrink-0 whitespace-nowrap"
+            className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-lg bg-[var(--surface-100)] border border-[var(--border-subtle)] hover:border-[var(--border-card)] text-[11px] font-medium text-[var(--text-primary)] hover:bg-[var(--surface-200)] transition-all shadow-xs group shrink-0 whitespace-nowrap"
             aria-label="GitHub Repository"
             title="Star on GitHub"
           >
-            <Github className="w-4 h-4 text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors shrink-0" />
+            <Github className="w-3.5 h-3.5 text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors shrink-0" />
             <span className="hidden sm:inline">GitHub</span>
-            <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.2 rounded bg-[var(--surface-200)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
+            <span className="hidden sm:inline-block text-[9px] font-mono px-1.5 py-0.2 rounded bg-[var(--surface-200)] text-[var(--text-muted)] border border-[var(--border-subtle)]">
               Star
             </span>
           </a>
@@ -244,27 +244,27 @@ export default function Navbar() {
           <button
             onClick={toggleTheme}
             aria-label="Toggle Theme"
-            className="p-2 rounded-xl bg-[var(--surface-100)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all hover:scale-105 shadow-xs shrink-0"
+            className="p-1.5 rounded-lg bg-[var(--surface-100)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all hover:scale-105 shadow-xs shrink-0"
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
           >
             {theme === 'dark' ? (
-              <Sun className="w-4 h-4 text-amber-300" />
+              <Sun className="w-3.5 h-3.5 text-amber-300" />
             ) : (
-              <Moon className="w-4 h-4 text-slate-700" />
+              <Moon className="w-3.5 h-3.5 text-slate-700" />
             )}
           </button>
 
           {/* Clean Menu Toggle Button (< 768px Mobile) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl bg-[var(--surface-100)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors shadow-xs shrink-0"
+            className="md:hidden p-1.5 rounded-lg bg-[var(--surface-100)] border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors shadow-xs shrink-0"
             aria-label="Toggle Navigation Menu"
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
-              <X className="w-4 h-4 text-brand-cyan" />
+              <X className="w-3.5 h-3.5 text-brand-cyan" />
             ) : (
-              <Menu className="w-4 h-4 text-[var(--text-primary)]" />
+              <Menu className="w-3.5 h-3.5 text-[var(--text-primary)]" />
             )}
           </button>
         </div>
@@ -275,12 +275,12 @@ export default function Navbar() {
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 top-16 bg-black/40 backdrop-blur-xs z-40 md:hidden animate-in fade-in duration-150"
+            className="fixed inset-0 top-[52px] bg-black/40 backdrop-blur-xs z-40 md:hidden animate-in fade-in duration-150"
             onClick={() => setMobileMenuOpen(false)}
           />
 
           {/* Clean Menu Container with Solid Background */}
-          <div className="fixed top-16 inset-x-0 z-50 bg-[var(--bg-main)] border-b border-[var(--border-subtle)] shadow-xl md:hidden animate-in fade-in slide-in-from-top-1 duration-150">
+          <div className="fixed top-[52px] inset-x-0 z-50 bg-[var(--bg-main)] border-b border-[var(--border-subtle)] shadow-xl md:hidden animate-in fade-in slide-in-from-top-1 duration-150">
             <div className="max-w-4xl mx-auto px-5 sm:px-8 py-6 space-y-5">
               {/* Minimal Nav List */}
               <nav className="flex flex-col divide-y divide-[var(--border-subtle)]/70">

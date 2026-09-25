@@ -293,9 +293,9 @@ function CodeSnippetBox({
   const lines = code.trim().split('\n');
 
   return (
-    <div className="my-8 rounded-2xl border border-[var(--border-card)] overflow-hidden shadow-lg bg-[#0a0d14] text-slate-100">
+    <div className="my-8 rounded-2xl border border-[#b8ad9b] dark:border-[var(--border-card)] overflow-hidden shadow-md bg-[#d1c8b7] text-stone-900 dark:bg-[#0a0d14] dark:text-slate-100">
       {/* Terminal Window Chrome */}
-      <div className="flex items-center justify-between px-4 py-2.5 bg-[#121722] border-b border-slate-800/80 select-none">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-[#c5bca9] border-b border-[#b8ad9b] dark:bg-[#121722] dark:border-slate-800/80 select-none">
         <div className="flex items-center gap-2">
           {/* macOS 3 dots */}
           <div className="flex items-center gap-1.5 mr-2">
@@ -304,23 +304,23 @@ function CodeSnippetBox({
             <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
           </div>
           <Terminal className="w-3.5 h-3.5 text-brand-cyan" />
-          <span className="text-xs font-mono text-slate-400 font-medium">
+          <span className="text-xs font-mono text-stone-700 dark:text-slate-400 font-medium">
             {language === 'bash' ? 'terminal — zsh' : `${language} snippet`}
           </span>
         </div>
 
         <button
           onClick={onCopyAll}
-          className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-xs font-mono text-brand-cyan hover:text-white transition-all border border-slate-700/80 shadow-xs"
+          className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-stone-900/5 hover:bg-stone-900/10 text-stone-800 hover:text-stone-950 border border-stone-400/40 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-xs font-mono dark:text-brand-cyan dark:hover:text-white transition-all dark:border-slate-700/80 shadow-xs"
         >
           {isCopied ? (
             <>
-              <Check className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-emerald-400 font-semibold">Copied!</span>
+              <Check className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
+              <span className="text-emerald-700 dark:text-emerald-400 font-semibold">Copied!</span>
             </>
           ) : (
             <>
-              <Copy className="w-3.5 h-3.5" />
+              <Copy className="w-3.5 h-3.5 text-stone-600 dark:text-slate-400" />
               <span>Copy All</span>
             </>
           )}
@@ -339,19 +339,19 @@ function CodeSnippetBox({
               return (
                 <div
                   key={idx}
-                  className="flex items-center gap-2 pt-3 pb-1 first:pt-0 border-t border-slate-800/60 first:border-t-0 text-xs font-mono"
+                  className="flex items-center gap-2 pt-3 pb-1 first:pt-0 border-t border-stone-400/30 dark:border-slate-800/60 first:border-t-0 text-xs font-mono"
                 >
                   <span className="px-1.5 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan font-bold text-[10px] tracking-wider">
                     {stepMatch[1].padStart(2, '0')}
                   </span>
-                  <span className="text-slate-300 italic font-medium">
+                  <span className="text-stone-800 dark:text-slate-300 italic font-medium">
                     {stepMatch[2]}
                   </span>
                 </div>
               );
             }
             return (
-              <div key={idx} className="text-slate-500 italic py-0.5 text-xs">
+              <div key={idx} className="text-stone-600 dark:text-slate-500 italic py-0.5 text-xs">
                 {line}
               </div>
             );
@@ -367,30 +367,30 @@ function CodeSnippetBox({
           return (
             <div
               key={idx}
-              className="group/line flex items-center justify-between py-1 px-2 -mx-2 rounded-md hover:bg-slate-800/60 transition-colors"
+              className="group/line flex items-center justify-between py-1 px-2 -mx-2 rounded-md hover:bg-stone-900/[0.05] dark:hover:bg-slate-800/60 transition-colors"
             >
               <div className="flex items-center gap-2 overflow-x-auto">
                 {isCommand && (
-                  <span className="text-emerald-400 font-bold select-none">$</span>
+                  <span className="text-emerald-800 dark:text-emerald-400 font-bold select-none">$</span>
                 )}
                 <span>
                   {/* Highlight flags like --open, --staged, etc. */}
                   {line.split(/(\s--?[a-zA-Z0-9_-]+(?:=[^\s]+)?)/).map((chunk, cIdx) => {
                     if (chunk.startsWith(' -') || chunk.startsWith('--')) {
                       return (
-                        <span key={cIdx} className="text-amber-300 font-medium">
+                        <span key={cIdx} className="text-amber-800 dark:text-amber-300 font-semibold">
                           {chunk}
                         </span>
                       );
                     }
                     if (chunk.includes('npx change-firewall')) {
                       return (
-                        <span key={cIdx} className="text-white font-bold">
+                        <span key={cIdx} className="text-stone-950 dark:text-white font-bold">
                           {chunk}
                         </span>
                       );
                     }
-                    return <span key={cIdx} className="text-slate-200">{chunk}</span>;
+                    return <span key={cIdx} className="text-stone-900 dark:text-slate-200 font-medium">{chunk}</span>;
                   })}
                 </span>
               </div>
@@ -399,12 +399,12 @@ function CodeSnippetBox({
                 <button
                   onClick={() => copySingleLine(trimmed, idx)}
                   title="Copy command"
-                  className="opacity-0 group-hover/line:opacity-100 px-2 py-0.5 rounded text-[10px] font-mono text-slate-400 hover:text-white hover:bg-slate-700 transition-all flex items-center gap-1 shrink-0 ml-2"
+                  className="opacity-0 group-hover/line:opacity-100 px-2 py-0.5 rounded text-[10px] font-mono text-stone-600 hover:text-stone-950 hover:bg-stone-900/10 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-700 transition-all flex items-center gap-1 shrink-0 ml-2"
                 >
                   {copiedLine === idx ? (
                     <>
-                      <Check className="w-3 h-3 text-emerald-400" />
-                      <span className="text-emerald-400">Copied</span>
+                      <Check className="w-3 h-3 text-emerald-700 dark:text-emerald-400" />
+                      <span className="text-emerald-700 dark:text-emerald-400">Copied</span>
                     </>
                   ) : (
                     <>
@@ -420,12 +420,12 @@ function CodeSnippetBox({
       </div>
 
       {/* Terminal Footer Status Bar */}
-      <div className="px-4 py-2 bg-[#121722]/80 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400 select-none">
+      <div className="px-4 py-2 bg-[#c5bca9]/80 border-t border-[#b8ad9b] dark:bg-[#121722]/80 dark:border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-stone-700 dark:text-slate-400 select-none">
         <span className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse" />
           <span>Local execution · &lt;200ms latency</span>
         </span>
-        <span className="text-slate-500">Zero token costs</span>
+        <span className="text-stone-600 dark:text-slate-500 font-medium">Zero token costs</span>
       </div>
     </div>
   );

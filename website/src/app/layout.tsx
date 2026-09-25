@@ -9,7 +9,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Change Firewall ⚡ — The Deterministic Trust Layer for AI Coding Agents',
+  metadataBase: new URL('https://change-firewall.vercel.app'),
+  title: 'Change Firewall ⚡ — AST Behavioral Diffing, Blast Radius & MCP for AI Code',
   description:
     'The neutral, non-LLM referee between "Agent says it\'s done" and "Safe to merge." Deterministic compiler-grounded verification of AI agent actions, blast radius mapping, invariant memory, and symbolic runtime crash proofs.',
   keywords: [
@@ -34,7 +35,29 @@ export const metadata: Metadata = {
       'The neutral, compiler-grounded referee sitting between "Agent says it\'s done" and "Safe to merge." Deterministic AST verification, blast radius mapping, and invariant memory.',
     url: 'https://change-firewall.vercel.app',
     siteName: 'Change Firewall',
+    images: [
+      {
+        url: 'https://change-firewall.vercel.app/preview.png',
+        secureUrl: 'https://change-firewall.vercel.app/preview.png',
+        width: 1200,
+        height: 630,
+        type: 'image/png',
+        alt: 'Change Firewall — AST Behavioral Diffing, Blast Radius & MCP Preview',
+      },
+    ],
+    locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Change Firewall ⚡ Stop Letting AI Coding Agents Grade Their Own Homework.',
+    description:
+      'The neutral, compiler-grounded referee sitting between "Agent says it\'s done" and "Safe to merge." Deterministic AST verification, blast radius mapping, and invariant memory.',
+    images: ['https://change-firewall.vercel.app/preview.png'],
+  },
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
 };
 

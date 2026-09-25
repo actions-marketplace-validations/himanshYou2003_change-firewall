@@ -153,30 +153,53 @@ body {
 
 /* Code block highlight: distinct deep background that doesn't merge with page or card backgrounds */
 .code-dark-panel {
-  background: #020409 !important;
-  color: #f1f5f9;
+  background: #d1c8b7 !important;
+  color: #181512;
+  border: 1px solid #b8ad9b;
 }
 .light .code-dark-panel {
-  background: #0f172a !important;
-  color: #f8fafc;
+  background: #d1c8b7 !important;
+  color: #181512;
+  border: 1px solid #b8ad9b;
+}
+.dark .code-dark-panel {
+  background: #020409 !important;
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .code-editor-box {
-  background: #020409;
-  border: 1px solid #334155;
+  background: #d1c8b7;
+  border: 1px solid #b8ad9b;
+  color: #181512;
+  box-shadow: 0 1px 3px rgba(40, 32, 24, 0.08);
 }
 .light .code-editor-box {
-  background: #0f172a;
+  background: #d1c8b7;
+  border: 1px solid #b8ad9b;
+  color: #181512;
+}
+.dark .code-editor-box {
+  background: #020409;
   border: 1px solid #334155;
+  color: #f1f5f9;
+  box-shadow: none;
 }
 
 .code-editor-header {
-  background: #0b101b;
-  border-bottom: 1px solid #1e293b;
+  background: #c5bca9;
+  border-bottom: 1px solid #b8ad9b;
+  color: #181512;
 }
 .light .code-editor-header {
-  background: #1e293b;
-  border-bottom: 1px solid #334155;
+  background: #c5bca9;
+  border-bottom: 1px solid #b8ad9b;
+  color: #181512;
+}
+.dark .code-editor-header {
+  background: #0b101b;
+  border-bottom: 1px solid #1e293b;
+  color: #f1f5f9;
 }
 
 /* Blast Radius Visualizer Circuit Streams & Radar */
